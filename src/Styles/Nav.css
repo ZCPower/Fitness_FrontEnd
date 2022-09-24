@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+.navContainer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    /* padding: .5em; */
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.logo {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+    padding: .15em;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links li {
+    margin: 0;
+    padding: 0 1.5em;
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: 'Play', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.links li:hover {
+    background-color: #ef4445
+}
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+}

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+
+.registerContainer,
+.loginContainer {
+    background-color: black;
+    padding: 1em;
+}
+
+.registerContainer h2,
+.loginContainer h2 {
+    color: white;
+    margin-bottom: .5em;
+    padding: 0 .75em .1em;
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Play';
+    text-transform: uppercase;
+    border-bottom: #ef4445 3px solid;
+
+}
+
+.registerContainer form,
+.loginContainer form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    align-items: center;
+}
+
+.registerContainer input,
+.loginContainer input {
+    margin: .5em;
+    font-size: 26px;
+    width: 95%;
+    padding: .4em 0;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+}
+
+.registerContainer button,
+.loginContainer button {
+    padding: 1em;
+    font-size: 20px;
+    width: 95%;
+    margin: .5em;
+    background-color: #f33;
+    color: white;
+
+}
+
+.registerContainer button:hover,
+.loginContainer button:hover {
+    background-color: #c22;
+    color: white;
+    cursor: pointer;
+}
+
+.registerContainer p,
+.loginContainer p {
+    color: white;
+}
