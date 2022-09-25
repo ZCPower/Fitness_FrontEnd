@@ -10,12 +10,11 @@
     /* background-image: url(https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
     /* background-image: url(https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80); */
     background-image: url(https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-    background-position-y: -3em;
+    background-position-y: 2em;
     /* background-image: url(https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg); */
     height: 100vh;
     background-size: 100vw;
     overflow: hidden;
-    background-color: rgba(255, 0, 0, 0.2);
     background-blend-mode: multiply;
 
 }

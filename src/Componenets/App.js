@@ -6,21 +6,46 @@ import Home from './Home';
 import Nav from './Nav.';
 import Login from './Login';
 import Register from './Register';
+import Account from './Account';
+import Welcome from './Welcome';
+import Routines from './Routines';
+import MyRoutines from './MyRoutines';
+import AllActivities from './AllActivities';
+
 function App() {
+  const tokenFromStorage = localStorage.getItem("jwt");
+  const [token, setToken] = useState(tokenFromStorage);
+  const [user, setUser] = useState('');
+  const [myRout, setMyRout] = useState([]);
+  const [allActs, setAllActs] = useState([]);
+
+
   return (
     <div className='App'>
       <div className="body">
         <Router>
-          <Nav />
+          <Nav token={token} />
           <Switch>
             <Route exact path='/'>
-              <Home />
+              <Home token={token} />
             </Route>
             <Route exact path='/login'>
-              <Login />
+              {!token ? <Login setToken={setToken} token={token} /> : <Welcome user={user} />}
             </Route>
             <Route exact path='/register'>
-              <Register />
+              {!token ? <Register /> : <Welcome user={user} />}
+            </Route>
+            <Route exact path='/account'>
+              {token ? <Account token={token} setToken={setToken} setUser={setUser} user={user} /> : <Login setToken={setToken} token={token} />}
+            </Route>
+            <Route exact path='/routines'>
+              <Routines />
+            </Route>
+            <Route exact path='/allActivities'>
+              <AllActivities setAllActs={setAllActs} allActs={allActs} />
+            </Route>
+            <Route exact path='/account/routines'>
+              <MyRoutines user={user} myRout={myRout} setMyRout={setMyRout} />
             </Route>
           </Switch>
         </Router>

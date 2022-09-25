@@ -1,0 +1,14 @@
+#myRoutContainer {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: rgba(0, 0, 0, .7);
+    width: 50%;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#myRoutContainer h2 {
+    margin-bottom: 1em;
+}

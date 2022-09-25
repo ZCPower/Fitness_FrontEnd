@@ -38,6 +38,7 @@ function Register() {
     }
     return (
         <div className='registerContainer'>
+            <img className='loginPhoto' src='https://media1.popsugar-assets.com/files/thumbor/ZoeVePhf_2hWf_cvx-Sy264TR0Q/837x0:4965x4128/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2021/10/08/786/n/1922729/ba9bad7761608571dc3c46.84091087_/i/runners-favorite-running-shoes.jpg'></img>
             <form onSubmit={handleSubmit}>
                 <h2>Create an account!</h2>
                 <input placeholder='Username' onChange={handleUsernameChange}></input>
