@@ -10,7 +10,7 @@ function AllActivities({ allActs, setAllActs }) {
             try {
                 await allActivities()
                     .then((result) => {
-                        // console.log(result)
+                        console.log(result)
                         setAllActs(result)
                     })
             } catch (error) {

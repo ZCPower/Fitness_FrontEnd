@@ -11,6 +11,8 @@ import Welcome from './Welcome';
 import Routines from './Routines';
 import MyRoutines from './MyRoutines';
 import AllActivities from './AllActivities';
+import CreateActivity from './CreateActivity';
+import TrackExercise from './TrackExercise';
 
 function App() {
   const tokenFromStorage = localStorage.getItem("jwt");
@@ -28,6 +30,12 @@ function App() {
           <Switch>
             <Route exact path='/'>
               <Home token={token} />
+            </Route>
+            <Route exact path='/activities/create'>
+              <CreateActivity token={token} />
+            </Route>
+            <Route exact path='/exercise'>
+              <TrackExercise />
             </Route>
             <Route exact path='/login'>
               {!token ? <Login setToken={setToken} token={token} /> : <Welcome user={user} />}

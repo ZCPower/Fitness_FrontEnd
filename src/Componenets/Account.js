@@ -27,7 +27,7 @@ function Account({ token, setToken, user, setUser }) {
     return (
         <div id='accountContainer'>
             <h2>{user}'s Account</h2>
-            <h4>View Your Routines:</h4> <p><Link to='/account/routines'>Routines</Link></p>
+            <h4>View Your Routines:</h4> <p><Link to='/account/routines'>My Routines</Link></p>
             <button onClick={logOut}>Log Out</button>
         </div>
     )

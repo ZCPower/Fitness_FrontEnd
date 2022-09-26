@@ -15,7 +15,7 @@ function Nav({ token }) {
                 <ul className='links'>
                     {!token ? <li><Link className='navLinks' to='/login'>Login</Link></li> : null}
                     {!token ? <li><Link className='navLinks' to='/register'>Register</Link></li> : null}
-                    {token ? <li><Link className='navLinks' to='/AllActivities'>Track Exercise</Link></li> : null}
+                    {token ? <li><Link className='navLinks' to='/exercise'>Track Exercise</Link></li> : null}
                     {token ? <li><Link className='navLinks' to='/account'>Account</Link></li> : null}
                 </ul>
             </nav>
