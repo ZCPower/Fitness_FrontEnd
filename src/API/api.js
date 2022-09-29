@@ -95,6 +95,7 @@ export async function allActivities() {
     }
 }
 
+//LAST ONE TESTED
 export async function createActivity(name, description, token) {
     const url = `${baseURL}/activities`
     try {
@@ -142,9 +143,154 @@ export async function getActivityRoutines(id) {
     const url = `${baseURL}/activities/${id}/routines`
 
     try {
-
+        const response = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const data = response.json()
+        console.log(data)
+        return data
     } catch (error) {
         console.log(error)
     }
 
+}
+
+//get all routines
+export async function allRoutines() {
+    const url = `${baseURL}/routines`;
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        const data = response.json()
+        console.log(data);
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+//create routine
+export async function createRoutine(token, name, goal, isPublic) {
+    const url = `${baseURL}/routines`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal,
+                isPublic: isPublic
+            })
+        })
+        const data = response.json()
+        console.log(data);
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function updateRoutine(id, token, name, goal) {
+    const url = `${baseURL}/routines/${id}`;
+    try {
+        const response = fetch(url, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                name: name,
+                goal: goal
+            })
+        })
+        const data = response.json();
+        console.log('updated routine:', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//DELETE ROUTINE 
+
+export async function deleteRoutine(id, token) {
+    const url = `${baseURL}/routines/${id}`
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        const data = response.json();
+        console.log('deleted routine', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//ATTACH ACTIVITY TO A ROUTINE.
+export async function attachRoutine(id) {
+    const url = `${baseURL}/routines/${id}/activities`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                activityId: 7,
+                count: 1,
+                duration: 20
+            })
+        })
+        const data = response.json();
+        console.log('attaching act to rout', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// UPDATE ROUTINE ACTIVITIES
+export async function updateRoutAct(id, count, duration) {
+    const url = `${baseURL}/routines/${id}/activities`;
+    try {
+        const response = await fetch(url, {
+            method: "PATCH",
+            body: JSON.stringify({
+                count: count,
+                duration: duration
+            })
+        })
+        const data = response.json();
+        console.log('updating routine activity', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//DELETE ROUTINE_ACTIVITIES
+export async function deleteRoutAct(id, token) {
+    const url = `${baseURL}/routine_activities/${id}`
+    try {
+        const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        const data = response.json();
+        console.log('deleting routAct', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
 }
