@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../Styles/TrackExercise.css'
 
 // This should house all of the links to create/view activities/routines
 function TrackExercise() {
     return (
-        <div>
+        <div id='trackContainer'>
             <h2>Track Your Exercise!</h2>
             <ul>
                 <li><Link to='/AllActivities'>View All Activities</Link></li>
-                <li>View All Routines</li>
+                <li><Link to='/AllRoutines'>View All Routines</Link></li>
                 <li><Link to='/activities/create'>Create New Activity</Link></li>
-                <li>Create New Routine</li>
+                <li><Link to='/routines/create'>Create New Routine</Link></li>
             </ul>
         </div>
     )

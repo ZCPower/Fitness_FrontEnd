@@ -13,6 +13,8 @@ import MyRoutines from './MyRoutines';
 import AllActivities from './AllActivities';
 import CreateActivity from './CreateActivity';
 import TrackExercise from './TrackExercise';
+import AllRoutines from './AllRoutines';
+import CreateRoutine from './CreateRoutine';
 
 function App() {
   const tokenFromStorage = localStorage.getItem("jwt");
@@ -34,6 +36,9 @@ function App() {
             <Route exact path='/activities/create'>
               <CreateActivity token={token} />
             </Route>
+            <Route exact path='/routines/create'>
+              <CreateRoutine token={token} />
+            </Route>
             <Route exact path='/exercise'>
               <TrackExercise />
             </Route>
@@ -52,6 +57,10 @@ function App() {
             <Route exact path='/allActivities'>
               <AllActivities setAllActs={setAllActs} allActs={allActs} />
             </Route>
+            <Route exact path='/allRoutines'>
+              <AllRoutines />
+            </Route>
+
             <Route exact path='/account/routines'>
               <MyRoutines user={user} myRout={myRout} setMyRout={setMyRout} />
             </Route>

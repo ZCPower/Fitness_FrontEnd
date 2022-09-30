@@ -1,0 +1,121 @@
+#createRoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#createRoutine {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    /* border: 1px solid red; */
+    margin-top: .25em;
+}
+
+#createRoutine input {
+    margin: .5em;
+    font-size: 20px;
+    padding: .25em;
+    width: 100%;
+    text-align: center;
+}
+
+#createRoutine button {
+    font-size: 18px;
+    padding: .25em;
+    width: 100%;
+    /* border-radius: 8px; */
+}
+
+#isPublic {
+    display: flex;
+    font-size: 18px;
+    /* border: 1px solid red; */
+    /* width: 250px; */
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .75em;
+}
+
+
+
+/* input[type=checkbox] {
+    visibility: hidden;
+} */
+
+input[type="checkbox"]:checked {
+    background-color: #f38f9f
+}
+
+.switch_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 220px;
+    min-width: 220px;
+    height: 220px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+
+input[type="checkbox"].switch_1 {
+    font-size: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1em;
+    height: 2.2em;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    background-color: #dabec367;
+}
+
+input[type="checkbox"].switch_1:checked {
+    background: #dc3030;
+}
+
+input[type="checkbox"].switch_1:after {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    content: "No";
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 2.2em;
+    height: 2.2em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    -webkit-transform: scale(.7);
+    transform: scale(.7);
+    left: 0;
+    /* padding: 1px; */
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+input[type="checkbox"].switch_1:checked:after {
+    left: calc(100% - 2.2em);
+    content: "Yes";
+}
