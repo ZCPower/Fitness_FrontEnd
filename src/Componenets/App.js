@@ -47,7 +47,7 @@ function App() {
           <Nav token={token} />
           <Switch>
             <Route exact path='/'>
-              <Home token={token} />
+              {token ? <Welcome user={user} /> : <Login setToken={setToken} token={token} />}
             </Route>
             <Route exact path='/activities/create'>
               <CreateActivity token={token} />
