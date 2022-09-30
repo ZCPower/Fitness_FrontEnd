@@ -4,16 +4,22 @@
     display: flex;
     flex-direction: column;
     /* position: relative; */
-    top: 10vh;
+    /* top: 10vh; */
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(0, 0, 0, 0.4) */
+    background-color: rgba(0, 0, 0, 0.35)
 }
 
 #routineBody h2 {
-    margin-top: 12vh;
-    margin-bottom: 2vh;
+    margin-top: 10vh;
+    padding-top: 2vh;
+    padding-bottom: 5vh;
+    /* margin-bottom: 2vh; */
     color: white;
+    /* background-color: rgba(0, 0, 0, .6); */
+    width: 100%;
+    height: 60px;
+    text-align: center;
 }
 
 #allRoutContainer {
@@ -29,7 +35,7 @@
 .routine {
     background-color: rgba(255, 255, 255, .5);
     color: black;
-    margin: 0.25em;
+    margin: 0.5em;
     flex-basis: 260px;
     min-width: 260px;
     display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { login } from '../API/api'
 import { Link } from 'react-router-dom'
 
-function Login({ token, setToken }) {
+function Login({ token, setToken, setUserId, userId }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,14 +23,15 @@ function Login({ token, setToken }) {
         console.log(username, password)
         try {
             await login(username, password).then((results) => {
+                console.log(results.message)
+                console.log(results.user.id)
+                // setUserId(results.user.id)
                 setToken(results.token)
                 localStorage.setItem("jwt", results.token);
             });
         } catch (error) {
-
+            console.log(error)
         }
-
-        console.log(username, 'USER', password, 'PASS')
     }
 
     return (

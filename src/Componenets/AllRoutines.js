@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { allRoutines, deleteRoutine } from '../API/api'
 import '../Styles/AllRoutines.css'
+import { currentUser } from '../API/api';
 
-function AllRoutines() {
+function AllRoutines({ token }) {
 
     const [allRout, setAllRout] = useState([]);
+    const [userId, setUserId] = useState('')
+
+    useEffect(() => {
+        async function fetchUser() {
+            try {
+                await currentUser(token)
+                    .then((result) => {
+                        setUserId(result.id)
+                    });
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchUser()
+    }, [token])
 
     useEffect(() => {
         async function fetchRoutines() {
@@ -19,8 +35,10 @@ function AllRoutines() {
             }
         }
         fetchRoutines();
-    }, [setAllRout]
+    }, [token, setAllRout, allRout]
     )
+
+    console.log(userId, 'USER ID')
 
     let mappedRoutines = allRout.map((rout, key) => {
         return (
@@ -28,13 +46,20 @@ function AllRoutines() {
                 <h3>#{key} {rout.name}</h3>
                 <h4>Creator: {rout.creatorName}</h4>
                 <h4>Goal: {rout.goal}</h4>
+                UserId: {userId}
+                CreatorId:{rout.creatorId}
                 <div className='routButtons'>
                     <button>Modify Routine</button>
-                    <button>Delete Routine</button>
+                    {rout.creatorId === userId ? <button onClick={() => {
+                        deleteRoutine(rout.id, token)
+                    }}>Delete Routine</button> : null}
                 </div>
             </div>
         )
     })
+
+
+
     return (
         <div id='routineBody'>
             <h2>AllRoutines</h2>

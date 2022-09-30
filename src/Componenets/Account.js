@@ -23,6 +23,8 @@ function Account({ token, setToken, user, setUser }) {
         fetchUser()
     }, [token])
 
+    console.log(token)
+    console.log(user)
 
     return (
         <div id='accountContainer'>

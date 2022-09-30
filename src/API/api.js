@@ -61,9 +61,9 @@ export async function currentUser(token) {
 }
 
 
-export async function myRoutines(user) {
-    const url = `${baseURL}/users/${user}/routines`;
-
+export async function myRoutines(username) {
+    const url = `${baseURL}/users/${username}/routines`;
+    console.log(url)
     try {
         const response = await fetch(url, {
             headers: {
@@ -119,6 +119,7 @@ export async function createActivity(name, description, token) {
     }
 }
 
+//NOT TESTED
 export async function updateActivity(id, name, description) {
     const url = `${baseURL}/activities/${id}`;
 
@@ -139,6 +140,7 @@ export async function updateActivity(id, name, description) {
 }
 
 //get routines associated with routine.
+//NOT TESTED
 export async function getActivityRoutines(id) {
     const url = `${baseURL}/activities/${id}/routines`
 

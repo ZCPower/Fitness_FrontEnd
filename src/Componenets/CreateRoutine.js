@@ -1,10 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Styles/CreateRoutine.css'
+import { createRoutine } from '../API/api';
+import { currentUser } from '../API/api';
 
-function CreateRoutine() {
+function CreateRoutine({ token, setUserId }) {
     const [routName, setRoutName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false)
+
+    useEffect(() => {
+        async function fetchUser() {
+            try {
+                await currentUser(token)
+                    .then((result) => {
+                        setUserId(result.id)
+                    });
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchUser()
+    }, [token])
 
     const handlePublic = () => {
         setIsPublic(!isPublic)
@@ -22,6 +38,7 @@ function CreateRoutine() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(routName, goal, isPublic)
+        createRoutine(token, routName, goal, isPublic)
     }
 
     return (

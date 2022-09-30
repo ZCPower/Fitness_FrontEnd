@@ -15,13 +15,29 @@ import CreateActivity from './CreateActivity';
 import TrackExercise from './TrackExercise';
 import AllRoutines from './AllRoutines';
 import CreateRoutine from './CreateRoutine';
+import { currentUser } from '../API/api';
 
 function App() {
   const tokenFromStorage = localStorage.getItem("jwt");
   const [token, setToken] = useState(tokenFromStorage);
   const [user, setUser] = useState('');
-  const [myRout, setMyRout] = useState([]);
+  // const [myRout, setMyRout] = useState([]);
   const [allActs, setAllActs] = useState([]);
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        await currentUser(token)
+          .then((result) => {
+            console.log(result.username)
+            setUser(result.username)
+          });
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchUser()
+  }, [token])
 
 
   return (
@@ -58,11 +74,11 @@ function App() {
               <AllActivities setAllActs={setAllActs} allActs={allActs} />
             </Route>
             <Route exact path='/allRoutines'>
-              <AllRoutines />
+              <AllRoutines token={token} />
             </Route>
 
             <Route exact path='/account/routines'>
-              <MyRoutines user={user} myRout={myRout} setMyRout={setMyRout} />
+              <MyRoutines setUser={setUser} token={token} user={user} />
             </Route>
           </Switch>
         </Router>
