@@ -1,6 +1,6 @@
 #trackContainer {
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     width: 50vw;
     height: 50vh;
     display: flex;
@@ -14,7 +14,7 @@
 }
 
 #trackContainer ul li {
-    margin: .5em;
+    margin-bottom: 1em;
 }
 
 #trackContainer ul li a {
