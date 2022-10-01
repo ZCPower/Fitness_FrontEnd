@@ -35,21 +35,19 @@ function MyRoutines({ token, user, setUser }) {
             }
         }
         fetchMyRoutines()
-    }, [setMyRout])
+    }, [myRout, setMyRout])
 
     let mappedMyRout = myRout.map((rout, key) => {
         console.log(rout.name, rout.goal)
         return (
             <>
-                <h2>My Routine #{key + 1}</h2>
+                <h3>My Routine #{key + 1}</h3>
                 <h4>Name: {rout.name}</h4>
                 <h4>Goal: {rout.goal}</h4>
                 <h4>isPublic: {rout.isPublic}</h4>
             </>
         )
     })
-
-    console.log(mappedMyRout)
 
     // console.log(myRout, 'my rout')
     // let noRoutines = () => {

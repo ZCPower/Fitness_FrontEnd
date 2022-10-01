@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createActivity } from '../API/api';
+import '../Styles/CreateRoutine.css'
 
 function CreateActivity({ token }) {
     const [actName, setActName] = useState('');

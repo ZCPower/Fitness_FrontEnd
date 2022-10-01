@@ -10,6 +10,10 @@
     /* align-self: flex-start; */
 }
 
+#accountContainer h2 {
+    border-bottom: #ef4445 3px solid;
+}
+
 #accountContainer button {
     width: 40%;
     height: 4vh;
