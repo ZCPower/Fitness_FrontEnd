@@ -71,7 +71,7 @@ export async function myRoutines(username) {
             },
         });
         const data = response.json();
-        // console.log(data);
+        console.log(data);
         return data;
     } catch (error) {
         console.error(error);
@@ -221,8 +221,6 @@ export async function updateActivity(id, name, description, token) {
 
 //LAST ONE TESTED ^^^
 
-
-
 //get routines associated with routine.
 export async function getActivityRoutines(id) {
     const url = `${baseURL}/activities/${id}/routines`
@@ -241,9 +239,6 @@ export async function getActivityRoutines(id) {
     }
 
 }
-
-//DO THIS ONE
-
 
 export async function attachRoutine(id) {
     const url = `${baseURL}/routines/${id}/activities`;

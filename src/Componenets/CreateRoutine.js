@@ -6,8 +6,8 @@ import { currentUser } from '../API/api';
 function CreateRoutine({ token }) {
     const [routName, setRoutName] = useState('');
     const [goal, setGoal] = useState('');
-    const [isPublic, setIsPublic] = useState(false)
-    const [heading, setHeading] = useState('Create Routine')
+    const [isPublic, setIsPublic] = useState(true)
+    const [heading, setHeading] = useState('Create New Routine!')
 
 
     const handlePublic = () => {
@@ -31,6 +31,9 @@ function CreateRoutine({ token }) {
                 // console.log(result.message)
                 if (result.message === 'duplicate key value violates unique constraint "routines_name_key"') setHeading('A routine with that name already exists!')
                 if (!result.message) setHeading(`${routName} created.`)
+                setTimeout(() => {
+                    setHeading('Create New Routine!')
+                }, 2500)
             })
     }
 
@@ -42,9 +45,9 @@ function CreateRoutine({ token }) {
             <form id='createRoutine' onSubmit={handleSubmit}>
                 <input placeholder='Routine Name' onChange={handleName}></input>
                 <input placeholder='Routine Goal' onChange={handleGoal}></input>
-                <div id='isPublic' className="switch_box box_1">
+                {/* <div id='isPublic' className="switch_box box_1">
                     <label>Public Routine?</label><input type="checkbox" className="switch_1" onChange={handlePublic} />
-                </div>
+                </div> */}
                 <button>Create Routine</button>
             </form></div>
     )

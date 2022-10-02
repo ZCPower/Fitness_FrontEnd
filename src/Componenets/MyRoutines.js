@@ -35,7 +35,7 @@ function MyRoutines({ token, user, setUser }) {
             }
         }
         fetchMyRoutines()
-    }, [myRout, setMyRout])
+    }, [myRout])
 
     let mappedMyRout = myRout.map((rout, key) => {
         console.log(rout.name, rout.goal)

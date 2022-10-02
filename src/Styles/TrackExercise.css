@@ -1,6 +1,6 @@
 #trackContainer {
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     width: 50vw;
     height: 50vh;
     display: flex;
@@ -31,4 +31,19 @@
 #trackContainer ul li a:hover {
     text-decoration: underline;
     color: red;
+}
+
+.view,
+.create {
+    display: flex;
+}
+
+.view {
+    padding: 1.2em;
+    /* border-bottom: 2px solid white; */
+}
+
+.view li,
+.create li {
+    margin: 1em 2em;
 }
