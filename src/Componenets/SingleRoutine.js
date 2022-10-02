@@ -1,8 +1,28 @@
 import React, { useState } from 'react'
 import { deleteRoutine } from '../API/api'
+import { updateRoutine } from '../API/api'
 
 function SingleRoutine({ creatorId, name, creatorName, goal, userId, routId, key, token }) {
     const [edit, setEdit] = useState(false)
+    const [newName, setNewName] = useState(name);
+    const [newGoal, setNewGoal] = useState(goal);
+
+    function handleNameChange(e) {
+        setNewName(e.target.value)
+        // console.log(newName)
+    }
+
+    function handleGoalChange(e) {
+        setNewGoal(e.target.value)
+        // console.log(newGoal)
+    }
+
+    function handleUpdateRout(e) {
+        e.preventDefault()
+        updateRoutine(routId, newName, newGoal, token)
+        // console.log(routId, newName, newGoal)
+        setEdit(prevState => !prevState)
+    }
 
     const toggleEdit = (e) => {
         e.preventDefault()
@@ -33,20 +53,18 @@ function SingleRoutine({ creatorId, name, creatorName, goal, userId, routId, key
 
     return (
         <div className='routine'>
-            <h3>#{key} {name}</h3>
-            {/* {edit ? <h4>Editting!</h4> : null} */}
-            {/* <h4>Goal: {goal}</h4> */}
-            {edit ? <input placeholder='Edit Name'></input> : null}
-            {edit ? <input placeholder='Edit Goal'></input> : <h4>Goal: {goal}</h4>}
+            <h3>{key} {name}</h3>
+            {edit ? <input placeholder='Edit Name' defaultValue={name} onChange={handleNameChange}></input> : null}
+            {edit ? <input placeholder='Edit Goal' defaultValue={goal} onChange={handleGoalChange}></input> : <h4>Goal: {goal}</h4>}
             {edit ? null : <h4>Creator: {creatorName}</h4>}
-            {/* UserId: {userId} */}
-            {/* CreatorId:{creatorId} */}
-            <div className='routButtons'>
-                {creatorId === userId ? <button onClick={() => {
+            {creatorId === userId ? <div className='routButtons'>
+                <button className='EDIT' onClick={toggleEdit}>{edit ? 'Cancel Edit' : 'Modify Routine'}</button>
+
+                {edit ? <button onClick={handleUpdateRout}>Submit Update</button> : <button onClick={() => {
                     deleteRoutine(routId, token)
-                }}>Delete Routine</button> : null}
-                {creatorId === userId ? <button className='EDIT' onClick={toggleEdit}>Modify Routine</button> : null}
-            </div>
+                }}>Delete Routine</button>}
+
+            </div> : null}
         </div>
     )
 }

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { allActivities } from '../API/api'
 import '../Styles/AllActivities.css'
+import SingleActivity from './SingleActivity';
 
 
-function AllActivities({ allActs, setAllActs }) {
+function AllActivities({ allActs, setAllActs, token }) {
 
 
     useEffect(() => {
@@ -11,7 +12,6 @@ function AllActivities({ allActs, setAllActs }) {
             try {
                 await allActivities()
                     .then((result) => {
-                        console.log(result)
                         setAllActs(result)
                     })
             } catch (error) {
@@ -19,17 +19,23 @@ function AllActivities({ allActs, setAllActs }) {
             }
         }
         fetchActivities();
-    }, [setAllActs]
+    }, [allActs, setAllActs]
     )
+    // let mappedActivities = allActs.map((act, key) => {
+    //     return (
+    //         <div key={key} className='activity'>
+    //             <h3>#{key + 1} {act.name}</h3>
+    //             <div className='actInfo'>
+    //                 <h4>{act.description}</h4>
+    //             </div>
+    //             <div className='actButtons'><button>Edit</button><button>Add to Routine</button><button>Remove</button></div>
+    //         </div>
+    //     )
+    // })
+
     let mappedActivities = allActs.map((act, key) => {
         return (
-            <div key={key} className='activity'>
-                <h3>#{key + 1} {act.name}</h3>
-                <div className='actInfo'>
-                    <h4>{act.description}</h4>
-                </div>
-                <div className='actButtons'><button>Edit</button><button>Add to Routine</button><button>Remove</button></div>
-            </div>
+            <SingleActivity actId={act.id} description={act.description} name={act.name} actNum={key} token={token} />
         )
     })
     return (

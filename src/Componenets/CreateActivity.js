@@ -5,6 +5,7 @@ import '../Styles/CreateRoutine.css'
 function CreateActivity({ token }) {
     const [actName, setActName] = useState('');
     const [desc, setDesc] = useState('');
+    const [heading, setHeading] = useState('Create New Activity!')
 
 
     function handleNameChange(e) {
@@ -22,12 +23,16 @@ function CreateActivity({ token }) {
         e.preventDefault();
         console.log(actName, desc)
         createActivity(actName, desc, token)
+            .then(result => {
+                if (result.message) setHeading('An activity with this name already exists.')
+                else setHeading(`Activity, ${actName}, successfully created!`)
+            })
     }
 
 
     return (
         <div id='createActivityContainer'>
-            <h2>Create New Activity!</h2>
+            <h2>{heading}</h2>
             <form onSubmit={handleActSubmit} id='createActForm'>
                 <input onChange={handleNameChange} placeholder='Activity Name'></input>
                 <input onChange={handleDescription} placeholder='Description'></input>

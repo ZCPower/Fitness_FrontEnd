@@ -45,6 +45,12 @@
 
 #createActForm button {
     margin: .5em;
+    background-color: #e7d1d5ae;
+}
+
+#createActForm button:hover {
+    background-color: #dabec387;
+    color: white
 }
 
 #isPublic {

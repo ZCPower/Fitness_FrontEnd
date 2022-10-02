@@ -7,7 +7,7 @@ function CreateRoutine({ token }) {
     const [routName, setRoutName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false)
-
+    const [heading, setHeading] = useState('Create Routine')
 
 
     const handlePublic = () => {
@@ -26,11 +26,16 @@ function CreateRoutine({ token }) {
         e.preventDefault();
         console.log(routName, goal, isPublic)
         createRoutine(token, routName, goal, isPublic)
-            .then(result => console.log(result))
+            .then(result => {
+                // console.log('RESULT', result)
+                // console.log(result.message)
+                if (result.message === 'duplicate key value violates unique constraint "routines_name_key"') setHeading('A routine with that name already exists!')
+                if (!result.message) setHeading(`${routName} created.`)
+            })
     }
 
     return (
-        <div id='createRoutContainer'><h2>CreateRoutine</h2>
+        <div id='createRoutContainer'><h2>{heading}</h2>
             {/* {isPublic ? <h2>Public!</h2> : <h2>Private!</h2>}
             {routName}
             {goal} */}

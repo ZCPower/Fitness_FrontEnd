@@ -111,8 +111,6 @@ export async function createActivity(name, description, token) {
             })
         });
         const data = response.json();
-        console.log(data)
-        console.log('successful creation')
         return data;
     } catch (error) {
         console.log(error)
@@ -176,16 +174,38 @@ export async function createRoutine(token, name, goal, isPublic) {
     }
 }
 
+export async function updateRoutine(id, name, goal, token) {
+    const url = `${baseURL}/routines/${id}`;
+    try {
+        const response = fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal
+            })
+        })
+        const data = response.json();
+        console.log('updated routine:', data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-//LAST ONE TESTED ^^^
-
-
-export async function updateActivity(id, name, description) {
+export async function updateActivity(id, name, description, token) {
     const url = `${baseURL}/activities/${id}`;
 
     try {
         const response = await fetch(url, {
             method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
             body: JSON.stringify({
                 name: name,
                 description: description
@@ -198,6 +218,10 @@ export async function updateActivity(id, name, description) {
         console.log(error)
     }
 }
+
+//LAST ONE TESTED ^^^
+
+
 
 //get routines associated with routine.
 export async function getActivityRoutines(id) {
@@ -219,23 +243,7 @@ export async function getActivityRoutines(id) {
 }
 
 //DO THIS ONE
-export async function updateRoutine(id, name, goal) {
-    const url = `${baseURL}/routines/${id}`;
-    try {
-        const response = fetch(url, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                name: name,
-                goal: goal
-            })
-        })
-        const data = response.json();
-        console.log('updated routine:', data)
-        return data
-    } catch (error) {
-        console.log(error)
-    }
-}
+
 
 export async function attachRoutine(id) {
     const url = `${baseURL}/routines/${id}/activities`;
