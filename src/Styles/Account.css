@@ -12,6 +12,7 @@
 
 #accountContainer h2 {
     border-bottom: #ef4445 3px solid;
+    text-transform: capitalize;
 }
 
 #accountContainer button {

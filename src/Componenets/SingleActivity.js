@@ -7,6 +7,8 @@ function SingleActivity({ description, actId, name, actNum, token, myRout }) {
     const [newName, setNewName] = useState(name);
     const [newDesc, setNewDesc] = useState(description);
     const [attachingTo, setAttachingTo] = useState(null);
+    const [duration, setDuration] = useState(20);
+    const [count, setCount] = useState(1);
 
 
     function handleNameChange(e) {
@@ -41,9 +43,10 @@ function SingleActivity({ description, actId, name, actNum, token, myRout }) {
     }
 
     function handleAttachment() {
-        attachRoutine(attachingTo, actId)
+        attachRoutine(attachingTo, actId, count, duration)
         console.log(attachingTo)
         console.log(actId)
+        console.log(count, duration)
     }
 
     let mappedRouts = myRout.map((rout, key) => {

@@ -10,6 +10,10 @@
     flex-direction: column;
 }
 
+#welcomeContainer h2 {
+    text-transform: capitalize;
+}
+
 #welcomeContainer h4 {
     margin: 1em;
     font-size: 20px;
