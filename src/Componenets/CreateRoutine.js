@@ -27,8 +27,6 @@ function CreateRoutine({ token }) {
         console.log(routName, goal, isPublic)
         createRoutine(token, routName, goal, isPublic)
             .then(result => {
-                // console.log('RESULT', result)
-                // console.log(result.message)
                 if (result.message === 'duplicate key value violates unique constraint "routines_name_key"') setHeading('A routine with that name already exists!')
                 if (!result.message) setHeading(`${routName} created.`)
                 setTimeout(() => {

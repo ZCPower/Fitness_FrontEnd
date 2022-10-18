@@ -71,7 +71,7 @@ function App() {
               <Routines />
             </Route>
             <Route exact path='/allActivities'>
-              <AllActivities setAllActs={setAllActs} allActs={allActs} token={token} />
+              <AllActivities setAllActs={setAllActs} allActs={allActs} token={token} user={user} />
             </Route>
             <Route exact path='/allRoutines'>
               <AllRoutines token={token} />

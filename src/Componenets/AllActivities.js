@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { allActivities } from '../API/api'
+import React, { useEffect, useState } from 'react'
+import { allActivities, myRoutines } from '../API/api'
 import '../Styles/AllActivities.css'
 import SingleActivity from './SingleActivity';
 
 
-function AllActivities({ allActs, setAllActs, token }) {
-
+function AllActivities({ allActs, setAllActs, token, user }) {
+    const [myRout, setMyRout] = useState([]);
 
     useEffect(() => {
         async function fetchActivities() {
@@ -21,6 +21,23 @@ function AllActivities({ allActs, setAllActs, token }) {
         fetchActivities();
     }, [allActs, setAllActs]
     )
+
+    useEffect(() => {
+        async function fetchMyRoutines() {
+            try {
+                await myRoutines(user)
+                    .then((result) => {
+                        // console.log(result)
+                        setMyRout(result)
+                    })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchMyRoutines()
+    }, [myRout])
+
+
     // let mappedActivities = allActs.map((act, key) => {
     //     return (
     //         <div key={key} className='activity'>
@@ -35,7 +52,7 @@ function AllActivities({ allActs, setAllActs, token }) {
 
     let mappedActivities = allActs.map((act, key) => {
         return (
-            <SingleActivity actId={act.id} description={act.description} name={act.name} actNum={key} token={token} />
+            <SingleActivity actId={act.id} description={act.description} name={act.name} actNum={key} token={token} myRout={myRout} />
         )
     })
     return (

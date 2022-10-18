@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { deleteRoutine } from '../API/api'
 import { updateRoutine } from '../API/api'
 
-function SingleRoutine({ creatorId, name, creatorName, goal, userId, routId, key, token }) {
+function SingleRoutine({ creatorId, name, creatorName, goal, userId, routId, key, token, myRout }) {
     const [edit, setEdit] = useState(false)
     const [newName, setNewName] = useState(name);
     const [newGoal, setNewGoal] = useState(goal);
+
+    // console.log(myRout, 'MY ROUT')
 
     function handleNameChange(e) {
         setNewName(e.target.value)
@@ -54,8 +56,8 @@ function SingleRoutine({ creatorId, name, creatorName, goal, userId, routId, key
     return (
         <div className='routine'>
             <h3>{key} {name}</h3>
-            {edit ? <input placeholder='Edit Name' defaultValue={name} onChange={handleNameChange}></input> : null}
-            {edit ? <input placeholder='Edit Goal' defaultValue={goal} onChange={handleGoalChange}></input> : <h4>Goal: {goal}</h4>}
+            {edit ? <><h4>Name:</h4><input placeholder='Edit Name' defaultValue={name} onChange={handleNameChange}></input></> : null}
+            {edit ? <><h4>Goal:</h4> <input id='editGoal' placeholder='Edit Goal' defaultValue={goal} onChange={handleGoalChange}></input></> : <h4>Goal: {goal}</h4>}
             {edit ? null : <h4>Creator: {creatorName}</h4>}
             {creatorId === userId ? <div className='routButtons'>
                 <button className='EDIT' onClick={toggleEdit}>{edit ? 'Cancel Edit' : 'Modify Routine'}</button>

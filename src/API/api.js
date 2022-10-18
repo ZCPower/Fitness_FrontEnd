@@ -63,7 +63,7 @@ export async function currentUser(token) {
 
 export async function myRoutines(username) {
     const url = `${baseURL}/users/${username}/routines`;
-    console.log(url)
+    // console.log(url)
     try {
         const response = await fetch(url, {
             headers: {
@@ -71,7 +71,7 @@ export async function myRoutines(username) {
             },
         });
         const data = response.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (error) {
         console.error(error);
@@ -240,13 +240,14 @@ export async function getActivityRoutines(id) {
 
 }
 
-export async function attachRoutine(id) {
-    const url = `${baseURL}/routines/${id}/activities`;
+export async function attachRoutine(routId, activityId) {
+    console.log(activityId, 'in the api')
+    const url = `${baseURL}/routines/${routId}/activities`;
     try {
         const response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                activityId: 7,
+                activityId: activityId,
                 count: 1,
                 duration: 20
             })
